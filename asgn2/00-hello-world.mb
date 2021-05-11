@@ -1,0 +1,5 @@
+# $Id: 00-hello-world.mb,v 1.1 2020-09-06 19:41:54-07 - - $
+        print "Hello"
+        dim a[10]
+        let a[1] = 10
+        print a[1]
