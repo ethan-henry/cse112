@@ -1,5 +1,5 @@
 (* Ethan Henry (efhenry@ucsc.edu)
-Chistopher Oey (caoey@ucsc.edu)*)
+Christopher Oey (caoey@ucsc.edu)*)
 (* $Id: dumper.ml,v 1.19 2020-10-23 18:08:29-07 - - $ *)
 
 let quote string =

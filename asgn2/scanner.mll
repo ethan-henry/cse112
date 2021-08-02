@@ -1,5 +1,5 @@
 (* Ethan Henry (efhenry@ucsc.edu)
-Chistopher Oey (caoey@ucsc.edu)*)
+Christopher Oey (caoey@ucsc.edu)*)
 (* $Id: scanner.mll,v 1.2 2019-11-26 14:09:51-08 - - $ *)
 
 {

@@ -1,0 +1,20 @@
+1. how Macro substitution:
+	a. interpret every $:
+		input: Makefile
+		output: running commands/checkin prereqs
+			$$: $
+			$<: file
+			${: variable/subroutine
+	b. so how?:
+		if $ at all in line: run
+		- substitution
+		- split string into arrays 
+2. GOAL:
+	output: all: ${EXECBIN} -> (hello)
+        goal: hello
+        looks for hello as a target ${EXECBIN} : blah blah blah
+
+
+67:40ish 5/20 lecture
+55:44 general macro
+56:20 specific categorization of macro, dependency, values

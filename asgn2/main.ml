@@ -1,5 +1,5 @@
 (* Ethan Henry (efhenry@ucsc.edu)
-Chistopher Oey (caoey@ucsc.edu)*)
+Christopher Oey (caoey@ucsc.edu)*)
 (* $Id: main.ml,v 1.6 2020-10-29 10:21:37-07 - - $ *)
 
 (*

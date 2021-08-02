@@ -1,5 +1,5 @@
-(*Ethan Henry (efhenry@ucsc.edu)
-# Chistopher Oey (caoey@ucsc.edu)*)
+(* Ethan Henry (efhenry@ucsc.edu)
+Christopher Oey (caoey@ucsc.edu)*)
 
 (* $Id: absyn.mli,v 1.8 2020-10-21 18:41:46-07 - - $ *)
 

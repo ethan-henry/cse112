@@ -1,5 +1,5 @@
 (* Ethan Henry (efhenry@ucsc.edu)
-Chistopher Oey (caoey@ucsc.edu)*)
+Christopher Oey (caoey@ucsc.edu)*)
 (* $Id: tables.ml,v 1.13 2021-02-04 11:27:21-08 - - $ *)
 
 type variable_table_t = (string, float) Hashtbl.t

@@ -1,5 +1,5 @@
 (* Ethan Henry (efhenry@ucsc.edu)
-Chistopher Oey (caoey@ucsc.edu)*)
+Christopher Oey (caoey@ucsc.edu)*)
 (* $Id: etc.ml,v 1.6 2020-10-22 02:50:33-07 - - $ *)
 
 let execname = Filename.basename Sys.argv.(0)

@@ -1,5 +1,5 @@
 /* Ethan Henry (efhenry@ucsc.edu)
- Chistopher Oey (caoey@ucsc.edu) */
+ Christopher Oey (caoey@ucsc.edu) */
 /* $Id: parser.mly,v 1.5 2020-10-27 16:12:15-07 - - $ */
 
 %{

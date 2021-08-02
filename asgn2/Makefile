@@ -1,5 +1,5 @@
 # Ethan Henry (efhenry@ucsc.edu)
-# Chistopher Oey (caoey@ucsc.edu)
+# Christopher Oey (caoey@ucsc.edu)
 # $Id: Makefile,v 1.31 2021-02-04 11:42:15-08 - - $
 
 #

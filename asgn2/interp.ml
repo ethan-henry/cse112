@@ -1,5 +1,5 @@
 (* Ethan Henry (efhenry@ucsc.edu)
-Chistopher Oey (caoey@ucsc.edu)*)
+Christopher Oey (caoey@ucsc.edu)*)
 (* $Id: interp.ml,v 1.18 2021-01-29 11:08:27-08 - - $ *)
 
 open Absyn
@@ -11,11 +11,16 @@ let source_filename = ref ""
 let rec eval_expr (expr : Absyn.expr) : float = match expr with
     | Number number -> number
     | Memref memref -> eval_memref memref
-    | Unary (oper, expr) -> Hashtbl.find Tables.unary_fn_table oper (eval_expr expr)
-    | Binary (oper, expr1, expr2) -> Hashtbl.find Tables.binary_fn_table oper (eval_expr expr1) (eval_expr expr2)
+    | Unary (oper, expr) -> 
+        Hashtbl.find Tables.unary_fn_table oper (eval_expr expr)
+    | Binary (oper, expr1, expr2) -> 
+        Hashtbl.find Tables.binary_fn_table oper 
+            (eval_expr expr1) (eval_expr expr2)
 
 and eval_memref (memref : Absyn.memref) : float = match memref with
-    | Arrayref (ident, expr) -> Array.get (Hashtbl.find Tables.array_table ident) (int_of_float (eval_expr expr))
+    | Arrayref (ident, expr) -> 
+        Array.get (Hashtbl.find Tables.array_table ident) 
+            (int_of_float (eval_expr expr))
     | Variable ident -> try Hashtbl.find Tables.variable_table ident
                         with Not_found -> 0.0
 
@@ -54,7 +59,8 @@ and interp_goto (label : Absyn.label) (continue : Absyn.program) =
     | None -> Etc.die ["ERROR: LABEL NOT FOUND"]
     | Some n -> interpret n
 
-and interp_if (expr : Absyn.relexpr) (label : Absyn.label) (continue : Absyn.program) =
+and interp_if (expr : Absyn.relexpr) (label : Absyn.label) 
+    (continue : Absyn.program) =
     match expr with
     | Relexpr (oper, expr1, expr2) -> 
         if Hashtbl.find Tables.bool_fn_table
@@ -68,7 +74,6 @@ and handle_eof (memref_list : Absyn.memref list)
             match memref with
             | Variable n ->
                     Hashtbl.add Tables.variable_table n (0.0 /. 0.0);
-            | Arrayref (_, _) -> Printf.printf "TEST";
         in List.iter handle memref_list;
 
 and interp_input (memref_list : Absyn.memref list)
@@ -81,7 +86,6 @@ and interp_input (memref_list : Absyn.memref list)
                     match memref with
                     | Variable n ->
                         Hashtbl.add Tables.variable_table n number;
-                    | Arrayref (n, arr) -> Printf.printf "TEST";
                  end);
         with End_of_file ->
                 begin
@@ -93,16 +97,20 @@ and interp_input (memref_list : Absyn.memref list)
 
 and interp_let (memref : Absyn.memref) (let_expr : Absyn.expr)
                (continue : Absyn.program) =
-	match memref with
-		| Variable n ->
-                Hashtbl.add Tables.variable_table n (eval_expr let_expr);
+        match memref with
+                | Variable n ->
+                Hashtbl.add Tables.variable_table n 
+                    (eval_expr let_expr);
                 interpret continue
-        | Arrayref (arr, n) ->
-                Array.set (Hashtbl.find Tables.array_table arr) (int_of_float (eval_expr n)) (eval_expr let_expr);
-                interpret continue 
+                | Arrayref (arr, n) ->
+                    Array.set (Hashtbl.find Tables.array_table arr) 
+                    (int_of_float (eval_expr n)) (eval_expr let_expr);
+                    interpret continue 
 
-and interp_dim (ident : Absyn.ident) (expr : Absyn.expr) (continue : Absyn.program) =
-    Hashtbl.add Tables.array_table ident (Array.create_float (int_of_float (eval_expr expr)));
+and interp_dim (ident : Absyn.ident) (expr : Absyn.expr) 
+    (continue : Absyn.program) =
+    Hashtbl.add Tables.array_table ident 
+        (Array.create_float (int_of_float (eval_expr expr)));
     interpret continue
 
 and interp_STUB reason continue = (
